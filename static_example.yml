@@ -1,0 +1,20 @@
+setup: false
+version: 2.1
+workflows:
+  Demo:
+    jobs:
+      - Hello
+
+jobs:
+  Hello:
+    executor: base
+    steps:
+      - run:
+          name: Hello
+          command: echo "Hello World"
+executors:
+    base:
+        description: CircleCI base agent / executor
+        docker:
+            - image: cimg/base:stable
+

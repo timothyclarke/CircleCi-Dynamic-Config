@@ -1,0 +1,23 @@
+setup: true
+version: 2.1
+orbs:
+  continuation: circleci/continuation@0.2.0
+workflows:
+  Setup Demo:
+    jobs:
+      - Pass Control
+
+
+jobs:
+  Pass Control:
+    executor: base
+    steps:
+      - checkout
+      - continuation/continue:
+          configuration_path: static_example.yml
+executors:
+    base:
+        description: CircleCI base agent / executor
+        docker:
+            - image: cimg/base:stable
+
